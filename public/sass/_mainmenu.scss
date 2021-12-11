@@ -1,0 +1,16 @@
+.main-megamenu ul.nav>li {
+  padding: 10px 0 5px;
+  >a{
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    
+    position: relative;
+    display: block;
+    transition: all 0.25s ease;
+    @include linkGrayDark();
+  }
+}
+.main-megamenu ul.nav>li:not(:last-child)>a {
+  margin-right: 50px;
+}

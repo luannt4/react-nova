@@ -1,0 +1,175 @@
+
+// =============================================================================
+// TYPE (CSS)
+// =============================================================================
+
+body{  line-height: 22px; padding:0;     font-size: 1rem;}
+
+// Stencil type component additions
+// -----------------------------------------------------------------------------
+h1, h2, h3, h4, h5, h6{ font-weight: 600;color: $gray;}
+h5, h6{text-transform: capitalize;}
+.page-heading {
+    margin: 0 0 spacing("base");
+    font-size:23px;
+    text-align: left;
+}
+:focus {outline: none;}
+
+
+// Link Color
+a{color: $linkColor; text-decoration: none;
+    &:hover{color: $color-textLink-hover;text-decoration: none;}
+    a:focus{ outline: none !important;text-decoration: none;}
+}
+
+/*
+@include scrollbars(.8em, $gray-light);
+@media only screen and (max-width: 992px){
+    @include scrollbars(.3em, $gray-lighter, rgba(255,255,255,0.1));
+}*/
+
+/*================ GRID ===================*/
+
+/*================ FORM Vendor ===================*/
+.slick-track{margin: 0;}
+body.hasAdminBar div.banners{margin:0;}
+.form-select--date{height: 35px;}
+.lazyload, .lazyloading{height: auto;}
+
+
+/*================ FORM GROUP ===================*/
+
+ul.menu, ol.menu ,ul.blank{list-style: none;margin: 0;padding: 0;}
+.alert ol li {list-style-type:decimal;margin:0 0 5px 15px;  }
+img { max-width:100%;}
+
+// Modal Content
+.productView-img-container:after{padding-bottom: 100%;}
+.slick-slide:focus { outline: none; }
+.rte{
+    ul{list-style: none;padding:0;margin: 0 0 1rem;}
+    li{ padding-left: 20px;
+        &:before{
+            content:'\f00c'; font-family: $FontAwesome; transform: translateX(-20px);position: absolute; font-size: 10px; margin: 2px 0;
+        }
+    }
+}
+
+
+
+.form-input{border-color: #d8d8d8;
+    &:focus{box-shadow: none;}
+}
+.btn{    padding: 0.6rem 1rem;}
+.btn-light { color: #212529;background-color: #f5f5f5; border-color: #e0e0e0;}
+.button{border-radius: 40px;    text-transform: uppercase;font-size: 13px; padding: .85rem 2.5rem;}
+.button--small{padding: .5rem 1rem;}
+
+.form-control{padding: 8px;}
+.button--action{background:$color-primary; border-color:$color-primary; color:white;
+    &:hover{background: darken($color-primary, 15%); border-color:darken($color-primary, 15%);color:white;}
+}
+.alert code{     
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding:3px;
+}
+
+.navBar--sub {    margin-bottom: 2rem;
+    .navBar-item {
+         display: inline-block;
+        margin: 0 10px 0 0;
+    }
+   
+}
+
+.pagination-list{margin-top: 1.5rem;
+    li{ background:#f2f2f2; border: 1px solid #dedede;border-radius: 4px;     margin-left: 0.35714rem;
+        &:hover{background:#fff;}
+        &.pagination-item--current{background: $background; border-color: $background;
+            a{color: white;}
+        }
+        a,button{
+            padding: 10px 15px;
+            height: 32px;
+            color: $gray;
+        }
+    }
+}
+div.actionBar-section{
+    .form-label{    font-size: 1rem; color: $gray-dark; text-transform: uppercase;letter-spacing: .05em;}
+    .form-field{border: none;background: transparent; border-radius: 0;}
+    .form-select{
+        -webkit-appearance:none!important;
+        -moz-appearance:none!important;
+        background-position:100% center;
+        background-repeat:no-repeat;
+        color:#454545;
+        line-height:normal;
+        cursor:pointer;
+        outline:0
+    }
+    .accordion-navigation>a,.compare-link-top a{
+        font-family:Poppins,Arial,Helvetica,sans-serif
+    }
+    .form-select::-ms-expand{
+        display:none
+    }
+    .form-select:disabled{
+        cursor:not-allowed
+    }
+    .form-select{
+        appearance:none;
+        background-image:url(#{$imgPath}icon/select-arr.png);
+        border-radius:0;
+        padding: side-values(.75rem 3rem .75rem 1rem);
+        border: 1px solid #dedede;
+        height:3.5em
+    }
+    .form-select:focus{
+        background-image:url(#{$imgPath}icon/select-arr-focus.png)
+    }
+
+    .form-select--date,.form-select--small{
+        background-position:right;
+        background-size:auto;
+        font-size:13px;
+        height:2.8rem;
+        line-height:1rem;
+        max-width:20rem;
+        padding:side-values(.75rem 3rem .75rem 1rem);
+        
+    }
+    
+}
+.cart-item-figure:after{padding-bottom: 40%;}
+
+
+/*================  Responsive breakpoint mixins in scss ===================*/
+@media (min-width: 1900px) {
+.col-xxl-auto, .col-xxl-1, .col-xxl-2, .col-xxl-3, .col-xxl-4, .col-xxl-5, .col-xxl-6, .col-xxl-7, .col-xxl-8, .col-xxl-9, .col-xxl-10, .col-xxl-11, .col-xxl-12, .col-xxl{
+        position: relative;
+      width: 100%;
+      min-height: 1px;
+      padding-right: 15px;
+      padding-left: 15px;
+}
+.offset-xxl-2{margin-left: 16.666667%;}
+.offset-xxl-3{margin-left: 25%;}
+.col-xxl {-ms-flex-preferred-size: 0; flex-basis: 0; -ms-flex-positive: 1;    flex-grow: 1;max-width: 100%;}
+.col-xxl-auto {-ms-flex: 0 0 auto; flex: 0 0 auto;width: auto;max-width: none;}
+.col-xxl-1 {-ms-flex: 0 0 8.333333%;flex: 0 0 8.333333%; max-width: 8.333333%;}
+.col-xxl-2 {-ms-flex: 0 0 16.666667%;flex: 0 0 16.666667%;max-width: 16.666667%;}
+.col-xxl-3 { -ms-flex: 0 0 25%; flex: 0 0 25%;max-width: 25%;}
+.col-xxl-4 {-ms-flex: 0 0 33.333333%;    flex: 0 0 33.333333%;max-width: 33.333333%;}
+.col-xxl-5 {-ms-flex: 0 0 41.666667%;    flex: 0 0 41.666667%;max-width: 41.666667%;}
+.col-xxl-6 { -ms-flex: 0 0 50%;   flex: 0 0 50%; max-width: 50%; }
+.col-xxl-7 {-ms-flex: 0 0 58.333333%;    flex: 0 0 58.333333%;  max-width: 58.333333%;}
+.col-xxl-8 {-ms-flex: 0 0 66.666667%;    flex: 0 0 66.666667%;  max-width: 66.666667%;}
+.col-xxl-9 {-ms-flex: 0 0 75%;  flex: 0 0 75%;max-width: 75%;}
+.col-xxl-10 {-ms-flex: 0 0 83.333333%;    flex: 0 0 83.333333%; max-width: 83.333333%;}
+.col-xxl-11 {-ms-flex: 0 0 91.666667%;   flex: 0 0 91.666667%;max-width: 91.666667%;}
+.col-xxl-12 {-ms-flex: 0 0 100%;   flex: 0 0 100%;  max-width: 100%; }
+.col-xxl-15{-ms-flex: 0 0 20%;   flex: 0 0 20%;  max-width: 20%;}
+}

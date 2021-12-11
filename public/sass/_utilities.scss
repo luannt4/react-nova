@@ -1,0 +1,296 @@
+// =============================================================================
+// UTILITIES
+// =============================================================================
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+.clear{clear: both;}
+.no-padding{padding: 0 !important;}
+.hidden{display:none !important;}
+
+// Text overflow
+// Requires inline-block or block for proper styling
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+@mixin line-clamp($numLines : 1, $lineHeight: 1.412) {
+  overflow: hidden;
+  text-overflow: -o-ellipsis-lastline;
+  text-overflow: ellipsis;
+  display: block;
+  /* autoprefixer: off */
+  display: -webkit-box;
+  -webkit-line-clamp: $numLines;
+  -webkit-box-orient: vertical;
+  line-height: 20px;
+  max-height: $numLines * $lineHeight + unquote('em');
+}
+
+
+//===== Minxin Link =======
+@mixin linkColor($linkColor,$linkColorHover){
+  color: $linkColor;
+  &:hover{color: $linkColorHover;}
+}
+@mixin link(){
+	color: $linkColor;text-decoration: none;
+	&:hover{color: darken($linkColor, 15%);}
+}
+@mixin linkGrayDark(){
+	color: $color-textLink;
+	&:hover{color: $color-textLink-hover;}
+}
+
+@mixin linkGray(){
+	color: $color-textLink;
+	&:hover{color: $color-textLink-hover;}
+}
+@mixin linkGraylighter(){
+	color: $input-color-placeholder ;
+	&:hover{color: $linkColor;}
+}
+@mixin linkGrayLight(){
+	color: $base-border-color;
+	&:hover{color: $linkColor;}
+}
+@mixin linkWhite(){
+	color: $white;
+	&:hover{color: $linkColor;}
+}
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	-webkit-opacity: $opacity;
+	-moz-opacity: $opacity;
+	-o-opacity: $opacity;
+	-ms-opacity: $opacity;
+	
+}
+@mixin border-radius($border-radius) {
+	border-radius: $border-radius;
+	-webkit-border-radius: $border-radius;
+	-moz-border-radius: $border-radius;
+	-o-border-radius: $border-radius;
+	-ms-border-radius: $border-radius;
+}
+@mixin hoverFade() {
+	img { 
+		&:hover{opacity: 0.8;}
+	}
+	
+}
+@mixin hoverFadeReverse() {
+	img { opacity: 0.6;
+		&:hover{opacity: 1;}
+	}
+	
+}
+
+
+//====== Minxin Buton =======
+@mixin buttonGrayDark(){
+	padding: 9px 20px; background: $gray-darker;color: #fff;   border-radius: 3px;border: none;
+	&:hover{background: $linkColor; border-color: $linkColor;color: #fff; }
+}
+
+@mixin buttonGray(){
+	padding: 12px 25px; background: $gray;color: #fff;  border: none;
+	&:hover{background: $linkColor; border-color: $linkColor;color: #fff; }
+}
+
+@mixin buttonGraylighter(){
+	padding: 9px 20px;background: #f2f5f7; color: #333;  border-radius: 3px; border: 1px solid #e9edf0;
+	&:hover{background: $linkColor; border-color: $linkColor;color: #fff; }
+	
+}
+@mixin buttonGraylight(){
+	@include buttonGray(); 
+	background: $input-color-placeholder; 
+	&:hover{background: $linkColor;}
+}
+
+@mixin buttonBuynow($color:#F7B733){
+  border-color:  $color;
+  background: $color;
+  &:hover{background:  darken($color, 10%); border-color:  darken($color, 10%);}
+}
+
+@mixin buttonColor(){
+	@include buttonGray();
+	background: $linkColor; border-color: $linkColor;
+	&:hover{background: $gray;border-color: $gray;}
+}
+
+@mixin bgbutton(){
+	background: -moz-linear-gradient(top, #474747 0%, #212121 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#474747), color-stop(100%,#212121));
+    background: -webkit-linear-gradient(top, #474747 0%,#212121 100%);
+    background: -o-linear-gradient(top, #474747 0%,#212121 100%);
+    background: -ms-linear-gradient(top, #474747 0%,#212121 100%);
+    background: linear-gradient(to bottom, #474747 0%,#212121 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#474747', endColorstr='#212121',GradientType=0 );
+}
+@mixin bgbuttonLighten(){
+	@include buttonGray();
+	background: $linkColor; border: none;
+	&:hover{background: lighten($linkColor,10%);}
+}
+
+@mixin bgbuttonDarken(){
+  @include buttonGray();
+  background: $linkColor; border: none;
+  &:hover{background: darken($linkColor,10%);}
+}
+
+@mixin btnOutlineLight(){
+  padding: 10px 35px;
+  border: 2px solid $white; border-radius: 3px; background:none; line-height: 22px; text-transform: capitalize;
+  &:hover{border-color: $linkColor;background: $background; color:$white;}
+}
+
+@mixin btnOutlineGray(){
+  padding: 8px 35px;color:$gray;
+  border: 2px solid $gray;  background:none; line-height: 22px; 
+  &:hover{border-color: $linkColor;color:$background;}
+}
+
+//===== sass-triangle =======
+@mixin triangle($direction, $size: 12px, $color: currentColor, $before: false) {
+
+  $w: null;
+  $h: null;
+  $c: null;
+  $length: length($size);
+  $pseudo: if($before, 'before', 'after');
+
+  @if $length > 2 {
+    $w: nth($size, 1);
+    $h: nth($size, 2);
+    $c: nth($size, 3);
+  } @else if $length > 1 {
+    $w: nth($size, 1);
+    $h: nth($size, 2);
+    $c: nth($size, 2);
+  } @else if $length == 1 {
+    $w: nth($size, 1);
+    $h: nth($size, 1);
+    $c: nth($size, 1);
+  } @else {
+    @error "Invalid size \"#{$size}\"";
+  }
+
+  &:#{$pseudo} {
+
+    display: inline-block;
+    content: "";
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+
+    @if $direction == 'up' {
+
+      @if ($length < 3) {
+
+        border-bottom: $h solid $color;
+        border-left: $w/2 solid transparent;
+        border-right: $w/2 solid transparent;
+
+      } @else {
+
+        border-bottom: $h solid $color;
+        border-left: $w solid transparent;
+        border-right: $c solid transparent;
+
+      }
+
+    } @else if $direction == 'down' {
+
+      @if ($length < 3) {
+
+        border-top: $h solid $color;
+        border-left: $w/2 solid transparent;
+        border-right: $w/2 solid transparent;
+
+      } @else {
+
+        border-top: $h solid $color;
+        border-left: $w solid transparent;
+        border-right: $c solid transparent;
+
+      }
+
+    } @else if $direction == 'left' {
+
+      @if ($length < 3) {
+
+        border-right: $h solid $color;
+        border-top: $w/2 solid transparent;
+        border-bottom: $w/2 solid transparent;
+
+      } @else {
+
+        border-right: $h solid $color;
+        border-top: $w solid transparent;
+        border-bottom: $c solid transparent;
+
+      }
+
+    } @else if $direction == 'right' {
+
+      @if ($length < 3) {
+
+        border-left: $h solid $color;
+        border-top: $w/2 solid transparent;
+        border-bottom: $w/2 solid transparent;
+
+      } @else {
+
+        border-left: $h solid $color;
+        border-top: $w solid transparent;
+        border-bottom: $c solid transparent;
+
+      }
+
+    } @else {
+      @error "Invalid direction \"#{$direction}\"";
+    }
+
+    @content;
+
+  }
+
+}
+//======   @include scrollbars(.5em, slategray);
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  30%)) {
+  // For Google Chrome
+  &::-webkit-scrollbar {
+      width:  $size;
+      height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+      background: $foreground-color;
+  }
+
+  &::-webkit-scrollbar-track {
+      background: $background-color;
+  }
+
+  // For Internet Explorer
+  
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  
+}
+
+//====== Arrow - Slick  ====
